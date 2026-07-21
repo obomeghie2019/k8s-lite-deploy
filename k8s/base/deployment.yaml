@@ -15,7 +15,7 @@ spec:
         app: 3mtt-capstone-by-obomeghie2019
     spec:
       containers:
-          name: 3mtt-capstone-by-obomeghie2019
+        - name: 3mtt-capstone-by-obomeghie2019
           image: ghcr.io/obomeghie2019/3mtt-capstone-by-obomeghie2019:latest
           imagePullPolicy: Always
           ports:
