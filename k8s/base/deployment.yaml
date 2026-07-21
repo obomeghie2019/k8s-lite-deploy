@@ -15,8 +15,9 @@ spec:
         app: 3mtt-capstone-by-obomeghie2019
     spec:
       containers:
-        - name: 3mtt-capstone-by-obomeghie2019
-          image: ghcr.io/<your-username>/3mtt-capstone-by-obomeghie2019:latest   # update once app is built/pushed
+          name: 3mtt-capstone-by-obomeghie2019
+          image: ghcr.io/obomeghie2019/3mtt-capstone-by-obomeghie2019:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
           resources:
