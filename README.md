@@ -10,7 +10,7 @@ Scaling microservices is hard without a consistent deploy/scale workflow.
 - In-cluster observability via Prometheus/Grafana
 
 ## Architecture
-See `docs/architecture-diagram.png`
+See ![Architecture Diagram](docs/architecture-diagram.png)
 
 ## Cost-safety measures
 - AKS free control-plane tier, single Standard_B2s node
