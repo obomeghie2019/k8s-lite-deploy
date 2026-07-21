@@ -11,7 +11,7 @@ variable "cluster_name" {
 }
 
 variable "node_vm_size" {
-  default = "Standard_B2s"  # cheapest burstable size, minimizes cost
+  default = "Standard_D2as_v7" 
 }
 
 variable "node_count" {
