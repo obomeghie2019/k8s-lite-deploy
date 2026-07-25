@@ -1,0 +1,158 @@
+<svg viewBox="0 0 1280 900" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#5b6b82"/>
+    </marker>
+    <linearGradient id="k8sGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b2a4a"/>
+      <stop offset="1" stop-color="#08315e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1280" height="900" fill="#f5f7fa"/>
+
+  <!-- Title -->
+  <text x="40" y="46" font-size="26" font-weight="700" fill="#0b1e33">Kubernetes-Lite Deploy — Architecture</text>
+  <text x="40" y="70" font-size="14" fill="#5b6b82">3MTT Capstone · obomeghie2019 · Azure AKS (free-tier-safe) + Prometheus/Grafana</text>
+
+  <!-- ===================== DEV / SOURCE ===================== -->
+  <rect x="40" y="100" width="260" height="160" rx="14" fill="#ffffff" stroke="#c7d2e0" stroke-width="1.5"/>
+  <text x="60" y="128" font-size="15" font-weight="700" fill="#1f3a5f">1 · Local Dev</text>
+  <text x="60" y="150" font-size="12" fill="#334155">VS Code</text>
+  <text x="60" y="170" font-size="12" fill="#334155">app/ (nginx static site)</text>
+  <text x="60" y="190" font-size="12" fill="#334155">Dockerfile · nginx.conf</text>
+  <text x="60" y="210" font-size="12" fill="#334155">k8s/ · infra/ · monitoring/</text>
+  <text x="60" y="230" font-size="12" fill="#334155">scripts/*.sh</text>
+
+  <!-- arrow dev -> github -->
+  <line x1="300" y1="180" x2="360" y2="180" stroke="#5b6b82" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="305" y="172" font-size="11" fill="#5b6b82">git push</text>
+
+  <!-- ===================== GITHUB ===================== -->
+  <rect x="360" y="100" width="260" height="160" rx="14" fill="#ffffff" stroke="#c7d2e0" stroke-width="1.5"/>
+  <text x="380" y="128" font-size="15" font-weight="700" fill="#1f3a5f">2 · GitHub</text>
+  <text x="380" y="150" font-size="12" fill="#334155">Repo: k8s-lite-deploy</text>
+  <text x="380" y="172" font-size="12" fill="#334155">GitHub Actions:</text>
+  <text x="392" y="190" font-size="11.5" fill="#475569">• build-and-push.yaml</text>
+  <text x="392" y="207" font-size="11.5" fill="#475569">• validate-manifests.yaml</text>
+  <text x="380" y="230" font-size="12" fill="#334155">Free CI minutes (public repo)</text>
+
+  <!-- arrow github -> ghcr -->
+  <line x1="620" y1="180" x2="680" y2="180" stroke="#5b6b82" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="622" y="172" font-size="11" fill="#5b6b82">build + push</text>
+
+  <!-- ===================== GHCR ===================== -->
+  <rect x="680" y="100" width="240" height="160" rx="14" fill="#ffffff" stroke="#c7d2e0" stroke-width="1.5"/>
+  <text x="700" y="128" font-size="15" font-weight="700" fill="#1f3a5f">3 · GHCR</text>
+  <text x="700" y="150" font-size="12" fill="#334155">ghcr.io/obomeghie2019/</text>
+  <text x="700" y="168" font-size="11.5" fill="#334155">3mtt-capstone-by-</text>
+  <text x="700" y="184" font-size="11.5" fill="#334155">obomeghie2019:latest</text>
+  <text x="700" y="206" font-size="12" fill="#334155">Visibility: Public</text>
+  <text x="700" y="226" font-size="12" fill="#334155">Free container registry</text>
+
+  <!-- arrow ghcr -> aks (down then left into cluster) -->
+  <line x1="800" y1="260" x2="800" y2="310" stroke="#5b6b82" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="806" y="290" font-size="11" fill="#5b6b82">image pull</text>
+
+  <!-- ===================== TERRAFORM / AZURE CLI ===================== -->
+  <rect x="40" y="310" width="260" height="140" rx="14" fill="#ffffff" stroke="#c7d2e0" stroke-width="1.5"/>
+  <text x="60" y="338" font-size="15" font-weight="700" fill="#1f3a5f">4 · IaC (infra/)</text>
+  <text x="60" y="360" font-size="12" fill="#334155">Terraform</text>
+  <text x="60" y="380" font-size="12" fill="#334155">1x Standard_D2as_v7 node</text>
+  <text x="60" y="400" font-size="12" fill="#334155">AKS free control-plane tier</text>
+  <text x="60" y="420" font-size="12" fill="#334155">scripts/cluster-up.sh / -down.sh</text>
+
+  <!-- arrow terraform -> aks -->
+  <line x1="300" y1="380" x2="380" y2="380" stroke="#5b6b82" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="305" y="372" font-size="11" fill="#5b6b82">provisions</text>
+
+  <!-- arrow azure cloud shell note -->
+  <text x="60" y="440" font-size="11" fill="#7c8ba1">run via Azure Cloud Shell (free)</text>
+
+  <!-- ===================== AKS CLUSTER (big box) ===================== -->
+  <rect x="380" y="300" width="860" height="560" rx="18" fill="url(#k8sGrad)"/>
+  <text x="404" y="332" font-size="16" font-weight="700" fill="#eaf2ff">Azure AKS Cluster · rg-k8s-lite-deploy</text>
+  <text x="404" y="352" font-size="11.5" fill="#a9c2e6">1 node · Standard_D2as_v7 · torn down after each demo (cluster-down.sh)</text>
+
+  <!-- default namespace box -->
+  <rect x="404" y="370" width="380" height="230" rx="12" fill="#0f3a66" stroke="#2d5a8f"/>
+  <text x="420" y="394" font-size="13.5" font-weight="700" fill="#eaf2ff">namespace: default</text>
+
+  <rect x="420" y="408" width="160" height="60" rx="8" fill="#153f6d" stroke="#3a6da3"/>
+  <text x="432" y="428" font-size="11.5" fill="#dceafe" font-weight="600">Deployment</text>
+  <text x="432" y="444" font-size="10.5" fill="#b9d0ef">3mtt-capstone-by-</text>
+  <text x="432" y="458" font-size="10.5" fill="#b9d0ef">obomeghie2019 (2-6 pods)</text>
+
+  <rect x="600" y="408" width="164" height="60" rx="8" fill="#153f6d" stroke="#3a6da3"/>
+  <text x="612" y="428" font-size="11.5" fill="#dceafe" font-weight="600">Service (ClusterIP)</text>
+  <text x="612" y="444" font-size="10.5" fill="#b9d0ef">svc-3mtt-capstone-</text>
+  <text x="612" y="458" font-size="10.5" fill="#b9d0ef">by-obomeghie2019</text>
+
+  <line x1="580" y1="438" x2="600" y2="438" stroke="#8fb4e0" stroke-width="1.6" marker-end="url(#arrow)"/>
+
+  <rect x="420" y="480" width="160" height="60" rx="8" fill="#153f6d" stroke="#3a6da3"/>
+  <text x="432" y="500" font-size="11.5" fill="#dceafe" font-weight="600">ConfigMap</text>
+  <text x="432" y="516" font-size="10.5" fill="#b9d0ef">app config (env)</text>
+
+  <rect x="600" y="480" width="164" height="60" rx="8" fill="#153f6d" stroke="#3a6da3"/>
+  <text x="612" y="500" font-size="11.5" fill="#dceafe" font-weight="600">HPA</text>
+  <text x="612" y="516" font-size="10.5" fill="#b9d0ef">target cpu 50%</text>
+  <text x="612" y="530" font-size="10.5" fill="#b9d0ef">min 2 · max 6</text>
+
+  <line x1="500" y1="468" x2="500" y2="480" stroke="#8fb4e0" stroke-width="1.6"/>
+  <line x1="682" y1="468" x2="682" y2="480" stroke="#8fb4e0" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="686" y="475" font-size="10" fill="#c8ddfa">scales</text>
+
+  <rect x="420" y="556" width="344" height="34" rx="8" fill="#0d3258" stroke="#2d5a8f" stroke-dasharray="3,2"/>
+  <text x="432" y="577" font-size="10.5" fill="#a9c2e6">nginx serves index.html · /health route via nginx.conf</text>
+
+  <!-- monitoring namespace box -->
+  <rect x="804" y="370" width="410" height="440" rx="12" fill="#0f3a66" stroke="#2d5a8f"/>
+  <text x="820" y="394" font-size="13.5" font-weight="700" fill="#eaf2ff">namespace: monitoring (kube-prometheus-stack)</text>
+
+  <rect x="820" y="408" width="180" height="70" rx="8" fill="#153f6d" stroke="#3a6da3"/>
+  <text x="832" y="430" font-size="11.5" fill="#dceafe" font-weight="600">Prometheus</text>
+  <text x="832" y="446" font-size="10.5" fill="#b9d0ef">scrapes pod + node</text>
+  <text x="832" y="460" font-size="10.5" fill="#b9d0ef">metrics every 30s</text>
+
+  <rect x="1014" y="408" width="180" height="70" rx="8" fill="#153f6d" stroke="#3a6da3"/>
+  <text x="1026" y="430" font-size="11.5" fill="#dceafe" font-weight="600">Alertmanager</text>
+  <text x="1026" y="446" font-size="10.5" fill="#b9d0ef">DemoAppHighCPU</text>
+  <text x="1026" y="460" font-size="10.5" fill="#b9d0ef">rule (&gt;50% / 2m)</text>
+
+  <line x1="1000" y1="443" x2="1014" y2="443" stroke="#8fb4e0" stroke-width="1.6" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="496" width="374" height="70" rx="8" fill="#153f6d" stroke="#3a6da3"/>
+  <text x="832" y="518" font-size="11.5" fill="#dceafe" font-weight="600">Grafana</text>
+  <text x="832" y="534" font-size="10.5" fill="#b9d0ef">Queries Prometheus · dashboards for</text>
+  <text x="832" y="549" font-size="10.5" fill="#b9d0ef">cluster / namespace / pod CPU &amp; memory</text>
+
+  <line x1="910" y1="478" x2="910" y2="496" stroke="#8fb4e0" stroke-width="1.6" marker-end="url(#arrow)"/>
+
+  <rect x="820" y="584" width="374" height="60" rx="8" fill="#0d3258" stroke="#2d5a8f" stroke-dasharray="3,2"/>
+  <text x="832" y="606" font-size="10.5" fill="#a9c2e6">Access pattern: kubectl port-forward (free, default)</text>
+  <text x="832" y="622" font-size="10.5" fill="#a9c2e6">or temporary Service type=LoadBalancer for live demo, reverted after</text>
+
+  <!-- arrow from prometheus down to app pods (scrape) -->
+  <line x1="820" y1="443" x2="784" y2="443" stroke="#8fb4e0" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <text x="700" y="435" font-size="10" fill="#c8ddfa">scrapes</text>
+
+  <!-- metrics-server note -->
+  <rect x="820" y="660" width="374" height="60" rx="8" fill="#0d3258" stroke="#2d5a8f" stroke-dasharray="3,2"/>
+  <text x="832" y="682" font-size="10.5" fill="#a9c2e6">metrics-server (built into AKS)</text>
+  <text x="832" y="698" font-size="10.5" fill="#a9c2e6">feeds live CPU % to the HPA controller</text>
+
+  <line x1="682" y1="540" x2="682" y2="690" stroke="#8fb4e0" stroke-width="1.6" stroke-dasharray="4,3"/>
+  <line x1="682" y1="690" x2="820" y2="690" stroke="#8fb4e0" stroke-width="1.6" stroke-dasharray="4,3" marker-end="url(#arrow)"/>
+
+  <!-- ===================== VIEWER / USER ===================== -->
+  <rect x="440" y="800" width="760" height="60" rx="12" fill="#ffffff" stroke="#c7d2e0" stroke-width="1.5"/>
+  <text x="460" y="826" font-size="12.5" font-weight="700" fill="#1f3a5f">Reviewer / Demo Viewer</text>
+  <text x="460" y="846" font-size="11" fill="#475569">curl / browser → app Service · Grafana dashboards · kubectl get hpa -w (live scaling)</text>
+
+  <line x1="820" y1="800" x2="820" y2="700" stroke="#5b6b82" stroke-width="2" marker-end="url(#arrow)" transform="rotate(180 820 750)"/>
+
+  <!-- Legend -->
+  <rect x="1080" y="820" width="16" height="16" fill="#153f6d" stroke="#3a6da3"/>
+  <text x="1102" y="833" font-size="11" fill="#334155">K8s resource</text>
+</svg>
