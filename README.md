@@ -19,14 +19,14 @@ See ![Architecture Diagram](docs/architecture-diagram.png)
 - `scripts/cluster-down.sh` destroys everything via Terraform when done
 
 ## How to reproduce
-\`\`\`bash
+```bash
 git clone <this-repo>
 cd k8s-lite-deploy
 ./scripts/cluster-up.sh
 ./scripts/deploy.sh
 # demo steps...
 ./scripts/cluster-down.sh
-\`\`\`
+```
 
 ## Demo video
 [link here]
